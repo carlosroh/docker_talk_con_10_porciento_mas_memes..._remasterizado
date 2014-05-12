@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=1024, user-scalable=no">
+
+  <title>Docker</title>
+
+  <!-- Required stylesheet -->
+  <link rel="stylesheet" media="screen" href="core/deck.core.css">
+
+  <!-- Extension CSS files go here. Remove or add as needed. -->
+  <link rel="stylesheet" media="screen" href="extensions/goto/deck.goto.css">
+  <link rel="stylesheet" media="screen" href="extensions/menu/deck.menu.css">
+  <link rel="stylesheet" media="screen" href="extensions/navigation/deck.navigation.css">
+  <link rel="stylesheet" media="screen" href="extensions/status/deck.status.css">
+  <link rel="stylesheet" media="screen" href="extensions/scale/deck.scale.css">
+
+  <!-- Style theme. More available in /themes/style/ or create your own. -->
+  <link rel="stylesheet" media="screen" href="themes/style/web-2.0.css">
+
+  <!-- Transition theme. More available in /themes/transition/ or create your own. -->
+  <link rel="stylesheet" media="screen" href="themes/transition/horizontal-slide.css">
+
+  <!-- Basic black and white print styles -->
+  <link rel="stylesheet" media="print" href="core/print.css">
+
+  <!-- Required Modernizr file -->
+  <script src="modernizr.custom.js"></script>
+</head>
+<body>
+  <div class="deck-container">
+
+    <!-- Begin slides. Just make elements with a class of slide. -->
+
+    <section class="slide">
+      <img src="img/docker-logo.png" />
+      <h2 align="center">The Linux container engine</h2>
+    </section>
+
+    <section class="slide">
+      <h2>Iniciemos con un cuento...</h2>
+      <div class="slide">
+        <p align="center">En un reino muy lejano tenían un problema...</p>
+        <img src="img/farfaraway.jpg" />
+      </div>
+    </section>
+
+    <section class="slide">
+      <h2>Iniciemos con un cuento...</h2>
+      <p align="center">todos en el reino querían transportar desde inocentes animalitos...</p>
+      <img src="img/burro.jpg" />
+    </section>
+
+    <section class="slide">
+      <h2>Iniciemos con un cuento...</h2>
+      <img src="img/superdestructoresespaciales.jpg" style="width: 700px;"/>
+      <p align="center">hasta destructores estelares.</p>
+      <p class="slide" align="center" style="font-size: 50px;"> Pero nadie sabía como.</p>
+    </section>
+
+    <section class="slide">
+      <h2>Iniciemos con un cuento...</h2>
+      <div class="slide">
+        <p align="center">El rey estaba desesperado, porque no sabía como llegarían<br>los destructores estelares que compró por Mercado libre,<br>ya que UPS no llegaba hasta su reino, y FedEx llegaba solamente mediante el uso de mulas.</p>
+        <img src="img/rey-enano.jpg" />
+      </div>
+      <div class="slide">
+        <p align="center">Pero que llegó el apuesto principe...</p>
+        <img src="img/Prince Charming.jpg" />
+      </div>
+    </section>
+
+    <section class="slide">
+      <h2>Iniciemos con un cuento...</h2>
+      <img src="img/container.jpg" style="width: 700px;"/>
+      <p align="center">El principe les dijo que usando contenedores estandar podrian facilmente<br>transportar sus naves, ya fuera en camiones, barcos, burros<br>o incluso la Death Star, y que transportarlos, cambiar de transporte y guardarlos seria muy facil.</p>
+    </section>
+
+    <section class="slide">
+      <h2>Problema resuelto...</h2>
+      <img src="img/prince-problem-solved.jpg" style="width: 700px;"/>
+      <p align="center">Vamonos al Sume para celebrarlo.</p>
+    </section>
+
+    <section class="slide">
+      <img src="img/docker-logo.png" />
+      <h2 align="center">The Linux container engine</h2>
+    </section>
+
+    <section class="slide">
+      <h2>¿Que es docker?</h2>
+      <ul>
+        <li class="slide">Un proyecto Open-Source que busca crear contenedores ligeros y autosuficientes de cualquier aplicacion.</li>
+        <li class="slide">El mismo contenedor con el que el programador trabaja y testea en su laptop, puede correr en produccion.</li>
+        <li class="slide">Puede ejecutarse en una VM, bare metal, clusters, nubes publicas, etc.</li>
+      </ul>
+    </section>
+
+    <section class="slide">
+      <img src="img/noposguau.jpg" style="zoom: 3;"/>
+    </section>
+
+    <section class="slide">
+      <h2 align="center">Instalación</h2>
+      <ul class="slide">Como son varias cosillas, les recomiendo que visiten https://www.docker.io/gettingstarted/. ¿Porque?
+        <ul class="slide"><h2>Varia un poco por las dependencias del sistema.</h2>
+          <li class="slide">Kernel v3.8</li>
+          <li class="slide">Iptables v1.4+</li>
+          <li class="slide">Git 1.7+</li>
+          <li class="slide">Procps/ps</li>
+          <li class="slide">XZ Utils v4.9+</li>
+          <li class="slide">Tener una jerarquía de <a href="https://github.com/tianon/cgroupfs-mount">cgroupfs</a> instalada apropiadamente.<br><strong>WTF is this?</strong> Un mecanismo de control del kernel y uso de sus recursos en grupos de tareas.</li>
+        </ul>
+        <li class="slide">Si usas DigitalOcean, ya tiene un droplet con ubuntu y docker preinstalado</li>
+        <li class="slide">Yo baje un binario xD</li>
+      </ul>
+    </section> 
+
+    <section class="slide">
+      <img src="img/ver-sangre.jpg" style="zoom: 3;"/>
+    </section>
+
+    <section class="slide">
+      <h2>Primeros pasos...</h2>
+      <pre>./docker -d &"</pre>
+      <pre>./docker run ubuntu "/bin/echo hello world"</pre>
+      <ul class="slide"><h2>¿Que paso?</h2>
+        <li class="slide">Iniciamos el demonio docker.</li>
+        <li class="slide">Descargo una imagen base del <a href="https://index.docker.io/">Docker Index</a></li>
+        <li class="slide">Se le asignó un sistema de archivos</li>
+        <li class="slide">Se le montó una capa de lectura/escritura</li>
+        <li class="slide">Se le asignó una interfas de red</li>
+        <li class="slide">Se le asignó una IP, para eso de la NAT</li>
+        <li class="slide">Se ejecuto el proceso que le pedi</li>
+        <li class="slide">Se mostró el resultado en nustra terminal.</li>
+      </ul>
+    </section>
+
+    <section class="slide">
+      <h2>No es una virtualizacion mas...</h2>
+      <ul class="slide"><h2>juay de rito?</h2>
+        <li class="slide">Los procesos comparten el kernel del host</li>
+        <li class="slide">No hay emulacion de dispositivos</li>
+        <li class="slide">No hay secuencia de booteo</li>
+        <ul class="slide">Arquitecturas y plataformas entre Host y contenedores deben coincidir.
+          <ul>¿Donde queda la portabilidad?
+            <li>¬.¬ no lo alcanze a investigar xD</li>
+          </ul>
+        </ul>
+      </ul>
+    </section>
+
+    <section class="slide">
+      <h2>Preguntas?</h2>
+    </section>
+
+    <section class="slide">
+      <h2>Referencias</h2>
+      <ul>
+        <li>https://www.docker.io/gettingstarted/</li>
+        <li>https://wiki.debian.org/HowToUpgradeKernel</li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </section>
+    <!-- End slides. -->
+
+    <!-- Begin extension snippets. Add or remove as needed. -->
+
+    <!-- deck.navigation snippet -->
+    <div aria-role="navigation">
+      <a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+      <a href="#" class="deck-next-link" title="Next">&#8594;</a>
+    </div>
+
+    <!-- deck.status snippet -->
+    <p class="deck-status" aria-role="status">
+      <span class="deck-status-current"></span>
+      /
+      <span class="deck-status-total"></span>
+    </p>
+
+    <!-- deck.goto snippet -->
+    <form action="." method="get" class="goto-form">
+      <label for="goto-slide">Go to slide:</label>
+      <input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+      <datalist id="goto-datalist"></datalist>
+      <input type="submit" value="Go">
+    </form>
+
+    <!-- End extension snippets. -->
+  </div>
+
+<!-- Required JS files. -->
+<script src="jquery.min.js"></script>
+<script src="core/deck.core.js"></script>
+
+<!-- Extension JS files. Add or remove as needed. -->
+<script src="extensions/menu/deck.menu.js"></script>
+<script src="extensions/goto/deck.goto.js"></script>
+<script src="extensions/status/deck.status.js"></script>
+<script src="extensions/navigation/deck.navigation.js"></script>
+<script src="extensions/scale/deck.scale.js"></script>
+
+<!-- Initialize the deck. You can put this in an external file if desired. -->
+<script>
+  $(function() {
+    $.deck('.slide');
+  });
+</script>
+</body>
+</html>
